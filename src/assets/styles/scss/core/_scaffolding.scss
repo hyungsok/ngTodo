@@ -1,0 +1,159 @@
+/* $scaffolding
+ ------------------------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Noto Sans Korean', sans-serif;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+
+  min-height: 100%;
+
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: $font-weight-base;
+  font-size: $font-size-base;
+  color: rgba(mat-color($foreground, base), 0.87);
+  line-height: 1.5;
+  font-family: $mat-font-family;
+  &.pace-done {
+    background: #6b6b6b;
+  }
+}
+
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+select,
+button,
+textarea,
+input {
+  vertical-align: baseline;
+}
+
+html, body {
+  &[dir=rtl], &[dir=ltr] {
+     unicode-bidi: embed
+  }
+}
+
+bdo[dir=rtl] {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+bdo[dir=ltr] {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+
+.mat-card.settings-panel {
+  position: fixed;
+  bottom: 6px;
+  right: 6px;
+  width: 250px;
+  z-index: 9;
+}
+
+.demo-checkbox {
+  .mat-checkbox, .mat-checkbox-layout {
+    width: 100%;
+  }
+  .mat-checkbox-layout .mat-checkbox-label {
+    flex: 1;
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+  }
+}
+
+.table {
+  display: flex;
+  flex-flow: column nowrap;
+  line-height: 1.3;
+  flex: 1 1 auto;
+  .tr {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    &:nth-of-type(even) {
+      background-color: #f2f2f2;
+    }
+    &:nth-of-type(odd) {
+      background-color: #ffffff;
+    }
+    .td, .th {
+      display: flex;
+      flex-flow: row nowrap;
+      flex-grow: 1;
+      flex-basis: 0;
+      padding: 0.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0px;
+      white-space: nowrap;
+      border-bottom: 1px solid #d0d0d0;
+      justify-content: center;
+      align-items: center;
+    }
+    .th {
+      font-weight: 700;
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+
+  div.content {
+    padding: 0.2rem;
+  }
+
+  /* 모바일에서 keep horizontal scroll visible */
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-scrollbar:vertical {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar:horizontal {
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+}
