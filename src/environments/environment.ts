@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // HOST: 'http://localhost:8080'
+  HOST: 'http://www.javabrain.kr:8080'
 };
