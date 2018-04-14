@@ -8,7 +8,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getTodoList() {
-    return this.http.get('http://www.javabrain.kr:8080/api/todo');
+  getTodoList(): Observable<TodoVO[]> {
+    return this.http.get<TodoVO[]>('http://www.javabrain.kr:8080/api/todo');
   }
 }
