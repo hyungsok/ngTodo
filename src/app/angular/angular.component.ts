@@ -9,6 +9,7 @@ import {TodoVO} from '../domain/todo.vo';
 })
 export class AngularComponent implements OnInit {
   todoList: TodoVO[] = [];
+  newTodo = new TodoVO();
 
   constructor(private userService: UserService) { }
 
@@ -20,4 +21,12 @@ export class AngularComponent implements OnInit {
       });
   }
 
+  addTodo() {
+    this.userService.addTodo(this.newTodo)
+      .subscribe(body => {
+        console.log(body);
+        // todoList 맨앞에 삽입
+        this.todoList.unshift(body);
+      });
+  }
 }

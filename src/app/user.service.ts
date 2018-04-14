@@ -17,8 +17,11 @@ export class UserService {
     });
   }
 
-
   getTodoList(): Observable<TodoVO[]> {
     return this.http.get<TodoVO[]>(this.SERVER + '/api/todo');
+  }
+
+  addTodo(params: TodoVO): Observable<TodoVO> {
+    return this.http.post<TodoVO>(this.SERVER + '/api/todo', params, {headers: this.headers});
   }
 }
