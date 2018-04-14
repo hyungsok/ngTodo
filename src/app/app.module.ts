@@ -11,6 +11,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {UserService} from './user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const route: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -33,6 +35,7 @@ const route: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(route),
+    HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatMenuModule,
@@ -40,7 +43,7 @@ const route: Routes = [
     MatButtonModule,
     MatCardModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
