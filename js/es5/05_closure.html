@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+  <script>
+    for(var i=0; i<5; ++i) {
+      $("<h1></h1>").text(i).on("click", function(){
+        console.log(i);
+      }).appendTo("body");
+    }
+
+  </script>
+</body>
+</html>
