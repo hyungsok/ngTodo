@@ -20,6 +20,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class AngularComponent implements OnInit {
   todoList: TodoVO[] = [];
   newTodo = new TodoVO();
+  tempTodoMap = new Map<number, TodoVO>();
 
   constructor(private userService: UserService) { }
 
@@ -38,5 +39,29 @@ export class AngularComponent implements OnInit {
         // todoList 맨앞에 삽입
         this.todoList.unshift(body);
       });
+  }
+
+  save(todo: TodoVO) {
+    // 템플릿 전환
+    todo.isEdited = true;
+    // 기존값 저장
+    // const tempTodo = new TodoVO();
+    // tempTodo.todo_id = todo.todo_id;
+    // tempTodo.todo = todo.todo;
+    // tempTodo.isFinish = todo.isFinish;
+
+    // deep copy하는 두가지 방법, Object.assign, es6의 spread 연산자
+    const tempTodo = Object.assign({}, todo);
+
+    this.tempTodoMap.set(tempTodo.todo_id, tempTodo);
+  }
+
+  restore(todo: TodoVO) {
+    // 기존값 복원
+    const tempTodo = this.tempTodoMap.get(todo.todo_id);
+    Object.assign(todo, tempTodo);
+
+    // 템플릿 전환
+    todo.isEdited = false;
   }
 }
