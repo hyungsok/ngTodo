@@ -27,7 +27,7 @@
       </div>
       <ng-template ngFor let-todo [ngForOf]="todoList">
         <div class="tr" [@flyInOut]="'in'" *ngIf="!todo.isEdited">
-          <div class="td">{{todo.isFinish ? '완료' : '미완료'}}</div>
+          <div class="td">{{todo.isFinished ? '완료' : '미완료'}}</div>
           <div class="td">{{todo.todo}}</div>
           <div class="td">{{todo.created}}</div>
           <div class="td">{{todo.updated}}</div>
@@ -46,7 +46,7 @@
           <div class="td">{{todo.created}}</div>
           <div class="td">{{todo.updated}}</div>
           <div class="td">
-            <button mat-raised-button color="primary">저장</button>
+            <button mat-raised-button color="primary" (click)="modify(todo)">저장</button>
             <button mat-raised-button color="warn" (click)="restore(todo)">취소</button>
           </div>
         </div>

@@ -48,7 +48,7 @@ export class AngularComponent implements OnInit {
     // const tempTodo = new TodoVO();
     // tempTodo.todo_id = todo.todo_id;
     // tempTodo.todo = todo.todo;
-    // tempTodo.isFinish = todo.isFinish;
+    // tempTodo.isFinished = todo.isFinished;
 
     // deep copy하는 두가지 방법, Object.assign, es6의 spread 연산자
     const tempTodo = Object.assign({}, todo);
@@ -63,5 +63,16 @@ export class AngularComponent implements OnInit {
 
     // 템플릿 전환
     todo.isEdited = false;
+  }
+
+  modify(todo: TodoVO) {
+    this.userService.modifyTodo(todo)
+      .subscribe(body => {
+        // 기존 todo의 메모리주소를 변경하면 안되고 값만 복사해서 넣어야 한다.
+        Object.assign(todo, body);
+        console.log(todo);
+        // 템플릿 전환
+        todo.isEdited = false;
+      });
   }
 }
