@@ -31,7 +31,7 @@
           <div class="td">{{todo.isFinished ? '완료' : '미완료'}}</div>
           <div class="td">{{todo.todo}}</div>
           <div class="td">{{todo.created | date: 'yyyy-MM-dd aa HH:mm'}}</div>
-          <div class="td">{{todo.updated}}</div>
+          <div class="td">{{todo.updated | mydate: 'yyyy-MM-dd aa HH:mm'}}</div>
           <div class="td">
             <button mat-raised-button color="primary" (click)="save(todo)">수정</button>
             <button mat-raised-button color="warn" (click)="remove(todo.todo_id, idx)">삭제</button>
@@ -57,3 +57,5 @@
 
   </mat-card-content>
 </mat-card>
+
+<!--<p>{{123123123123 | number}}</p>-->
