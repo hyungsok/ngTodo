@@ -26,7 +26,7 @@ const route: Routes = [
       {path: 'jquery', component: JqueryComponent},
       {path: 'angular', component: AngularComponent},
     ]}, // 사용자 사이트
-  // {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}, // 관리자 사이트, lazyloading
+  {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}, // 관리자 사이트, lazyloading
 ];
 
 @NgModule({
