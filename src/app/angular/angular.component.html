@@ -26,7 +26,8 @@
         <div class="th">삭제</div>
       </div>
       <ng-template ngFor let-todo [ngForOf]="todoList" let-idx="index">
-        <div class="tr" [@flyInOut]="'in'" *ngIf="!todo.isEdited">
+        <div class="tr" [@flyInOut]="'in'" *ngIf="!todo.isEdited"
+             appHighlight [highlightColor]="'#c8fffb'">
           <div class="td">{{todo.isFinished ? '완료' : '미완료'}}</div>
           <div class="td">{{todo.todo}}</div>
           <div class="td">{{todo.created}}</div>
