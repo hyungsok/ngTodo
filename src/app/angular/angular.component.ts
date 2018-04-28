@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {TodoVO} from '../domain/todo.vo';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {ResultVO} from '../domain/result.vo';
 
 @Component({
   selector: 'app-angular',
@@ -74,5 +75,18 @@ export class AngularComponent implements OnInit {
         // 템플릿 전환
         todo.isEdited = false;
       });
+  }
+
+  remove(todo_id: number, index: number) {
+    const result = confirm('삭제하시겠습니까?');
+    if (result) {
+      // remove api 호출하고 성공하면 삭제하기
+      this.userService.removeTodo(todo_id)
+        .subscribe(body => {
+          if (body.result === 0) {
+            this.todoList.splice(index, 1);
+          }
+        });
+    }
   }
 }
