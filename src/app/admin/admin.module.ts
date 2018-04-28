@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MatExpansionModule, MatToolbarModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 const route: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -17,6 +18,7 @@ const route: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(route),
+    FlexLayoutModule,
     MatToolbarModule,
     MatExpansionModule,
   ],
