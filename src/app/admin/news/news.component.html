@@ -5,10 +5,15 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="board-box" fxLayout="column" *ngFor="                    ">
-      <p fxLayout="row" fxLayoutAlign="                         ">
-        <span>                    </span><span>                     </span>
-      </p>
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <span>{{news.title}}</span>
+          <span *ngIf="news.comment_count" style="color: red;" class="ml-1">[ {{news.comment_count}} ]</span>
+        </div>
+
+        <span>{{news.created}}</span>
+      </div>
     </div>
     <!-- 페이지네이션 -->
   </mat-card-content>
