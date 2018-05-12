@@ -7,6 +7,6 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button mat-button-sm color="primary">수정</button>
-    <button mat-raised-button mat-button-sm color="warn">삭제</button>
+    <button mat-raised-button mat-button-sm color="warn" (click)="confirmDelete(news)">삭제</button>
   </mat-card-actions>
 </mat-card>
