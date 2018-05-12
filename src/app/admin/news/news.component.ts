@@ -27,8 +27,14 @@ export class NewsComponent implements OnInit {
         console.log(body);
         // body의 data 필드를 newsList에 담기
         this.newsList = body.data;
+        this.page.totalCount = body.total;
         console.log(this.newsList);
       });
   }
 
+  pageChanged(event: any) {
+    console.log(event);
+    this.page.pageIndex = event.pageIndex;
+
+  }
 }

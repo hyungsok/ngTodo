@@ -16,5 +16,10 @@
       </div>
     </div>
     <!-- 페이지네이션 -->
+    <mat-paginator [length]="page.totalCount" [pageIndex]="page.pageIndex"
+                   [pageSize]="page.pageSize"
+                   [pageSizeOptions]="page.pageSizeOptions" (page)="pageChanged($event)">
+    </mat-paginator>
+
   </mat-card-content>
 </mat-card>
