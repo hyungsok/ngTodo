@@ -29,4 +29,8 @@ export class AdminService {
   addNews(news: NewsVO): Observable<ResultVO> {
     return this.http.post<ResultVO>(this.SERVER + '/api/news', news, {headers: this.headers});
   }
+
+  imageUpload(formData: FormData) {
+    return this.http.post(this.SERVER + '/api/imageUpload', formData);
+  }
 }
