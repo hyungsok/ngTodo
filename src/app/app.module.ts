@@ -11,12 +11,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
+  MatCheckboxModule, MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule,
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
@@ -24,7 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { MydatePipe } from './mydate.pipe';
 import { RegisterComponent } from './auth/register/register.component';
@@ -60,19 +60,23 @@ const route: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(route),
     HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MatMenuModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatDialogModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [UserService, AuthGuardService],
   bootstrap: [AppComponent],

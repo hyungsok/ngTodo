@@ -58,4 +58,15 @@ export class UserService {
     });
     return this.http.put<ResultVO>(this.SERVER + '/member/api/member', member, {headers: header, observe: 'response'});
   }
+
+  // login & signUp
+  signUp(params: MemberVO) {
+    return this.http.post(this.SERVER + '/api/signUp', JSON.stringify(params), {headers: this.headers})
+      .toPromise();
+  }
+
+  login(params: MemberVO) {
+    return this.http.post(this.SERVER + '/api/login', JSON.stringify(params), {headers: this.headers})
+      .toPromise();
+  }
 }
