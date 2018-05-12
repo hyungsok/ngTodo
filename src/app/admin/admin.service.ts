@@ -20,4 +20,8 @@ export class AdminService {
   findNews(params: any): Observable<ResultVO> {
     return this.http.post<ResultVO>(this.SERVER + '/api/newsList', params, {headers: this.headers});
   }
+
+  findOneNews(news_id: number) {
+    return this.http.get(this.SERVER + `/api/news?news_id=${news_id}`);
+  }
 }

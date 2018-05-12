@@ -7,7 +7,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="board-box" fxLayout="column" *ngFor="let news of newsList">
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList" (click)="gotoView(news)">
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div>
           <span>{{news.title}}</span>
