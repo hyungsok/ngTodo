@@ -17,9 +17,13 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getNewsList();
+  }
+
+  getNewsList() {
     const params = {
-      start_index: 0,
-      page_size: 5
+      start_index: this.page.pageIndex * this.page.pageSize,
+      page_size: this.page.pageSize
     };
 
     this.adminService.findNews(params)
@@ -35,6 +39,8 @@ export class NewsComponent implements OnInit {
   pageChanged(event: any) {
     console.log(event);
     this.page.pageIndex = event.pageIndex;
+    this.page.pageSize = event.pageSize;
 
+    this.getNewsList();
   }
 }
