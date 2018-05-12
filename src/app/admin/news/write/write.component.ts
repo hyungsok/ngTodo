@@ -25,6 +25,9 @@ export class WriteComponent implements OnInit {
           // success
           this.snackBar.open('등록하였습니다.', null, {duration: 3000});
           this.router.navigateByUrl('/admin/news');
+
+          // 2) 이벤트 발생자: 뉴스 등록 이벤트 발생
+          this.adminService.refresh.next(true);
         }
       });
   }
