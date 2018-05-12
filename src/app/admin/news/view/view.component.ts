@@ -43,6 +43,12 @@ export class ViewComponent implements OnInit {
   }
 
   confirmDelete(news: NewsVO) {
-    this.dialog.open(ViewDialogComponent, {data: {content: `${news.title}을(를) 삭제하시겠습니까?`}});
+    this.dialog.open(ViewDialogComponent, {data: {content: `${news.title}을(를) 삭제하시겠습니까?`}})
+      .afterClosed().subscribe(data => {
+        if (data) {
+          // 삭제 로직 구현
+          console.log(data);
+        }
+    });
   }
 }
