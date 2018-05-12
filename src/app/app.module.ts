@@ -33,13 +33,17 @@ import { ChatComponent } from './chat/chat.component';
 import {LoginDialogComponent} from './auth/login/login.dialog.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 
-const route: Routes = [
-  {path: '', component: IndexComponent, children: [
-      {path: '', component: HomeComponent},
-      {path: 'jquery', component: JqueryComponent},
-      {path: 'angular', component: AngularComponent},
-    ]}, // 사용자 사이트
-  {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}, // 관리자 사이트, lazyloading
+const routes: Routes = [
+  { path: '', component: IndexComponent, children: [
+      { path: '', component: HomeComponent},
+      { path: 'jquery', component: JqueryComponent},
+      { path: 'angular', component: AngularComponent},
+      { path: 'register', component: RegisterComponent},
+      { path: 'nickname', component: NicknameComponent, canActivate: [AuthGuardService]},
+      { path: 'chat', component: ChatComponent, canActivate: [AuthGuardService]},
+    ]},
+  // 참고: 향후 관리자 생성 모듈
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
 ];
 
 @NgModule({
@@ -61,7 +65,7 @@ const route: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(route),
+    RouterModule.forRoot(routes),
     HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
