@@ -1,23 +1,64 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center">
-  <span>AngularTodo</span>
-  <span fxFlex="1 1 auto"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-</mat-toolbar>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/">
-    <mat-icon>dialpad</mat-icon>
-    <span>home</span>
-  </button>
-  <button mat-menu-item routerLink="/jquery">
-    <mat-icon>voicemail</mat-icon>
-    <span>jquery</span>
-  </button>
-  <button mat-menu-item routerLink="/angular">
-    <mat-icon>notifications_off</mat-icon>
-    <span>angular</span>
-  </button>
-</mat-menu>
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" fxHide.gt-xs="true"><mat-icon>menu</mat-icon></button>
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item routerLink="/jquery">
+      <mat-icon svgIcon="jquery">track_changes</mat-icon>
+      <span>jquery</span>
+    </button>
+    <button mat-menu-item routerLink="/angular">
+      <mat-icon svgIcon="angular"></mat-icon>
+      <span>angular</span>
+    </button>
+    <button mat-menu-item routerLink="/news">
+      <mat-icon svgIcon="news">fiber_new</mat-icon>
+      <span>news</span>
+    </button>
+  </mat-menu>
+  <span routerLink="/" style="cursor: pointer;">AngularTodo</span>
 
-<router-outlet></router-outlet>
+  <span style="flex: 1 1 auto"></span>
+  <div fxHide.xs="true">
+    <button mat-button routerLink="/jquery">
+      <mat-icon svgIcon="jquery"></mat-icon>
+      <span>jquery</span>
+    </button>
+    <button mat-button routerLink="/angular">
+      <mat-icon svgIcon="angular"></mat-icon>
+      <span>angular</span>
+    </button>
+    <button mat-button routerLink="/news">
+      <mat-icon svgIcon="news"></mat-icon>
+      <span>news</span>
+    </button>
+  </div>
+
+  <button mat-button [matMenuTriggerFor]="login_menu">
+    <mat-icon svgIcon="person"></mat-icon>
+    <span *ngIf="!(authService.authSource$ | async)">로그인</span>
+    <span *ngIf="authService.authSource$ | async">내 정보</span>
+  </button>
+  <mat-menu #login_menu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="authService.openLogin()" *ngIf="!(authService.authSource$ | async)">
+      <mat-icon svgIcon="login"></mat-icon>
+      <span>로그인</span>
+    </button>
+    <button mat-menu-item (click)="authService.logOut()" *ngIf="authService.authSource$ | async">
+      <mat-icon svgIcon="logout"></mat-icon>
+      <span>로그아웃</span>
+    </button>
+    <button mat-menu-item routerLink="/nickname">
+      <mat-icon svgIcon="nickname"></mat-icon>
+      <span>닉네임변경</span>
+    </button>
+    <button mat-menu-item routerLink="/chat">
+      <mat-icon svgIcon="chat"></mat-icon>
+      <span>채팅</span>
+    </button>
+  </mat-menu>
+
+  <!--<p>data: {{!(authService.authSource$ | async)}}</p>-->
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -19,6 +19,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { MydatePipe } from './mydate.pipe';
+import { RegisterComponent } from './auth/register/register.component';
+import { NicknameComponent } from './nickname/nickname.component';
+import { ChatComponent } from './chat/chat.component';
+import {LoginDialogComponent} from './auth/login/login.dialog.component';
 
 const route: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -37,6 +41,10 @@ const route: Routes = [
     JqueryComponent,
     HighlightDirective,
     MydatePipe,
+    LoginDialogComponent,
+    RegisterComponent,
+    NicknameComponent,
+    ChatComponent,
     AngularComponent
   ],
   imports: [
@@ -56,6 +64,7 @@ const route: Routes = [
     MatCheckboxModule,
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginDialogComponent]
 })
 export class AppModule { }
