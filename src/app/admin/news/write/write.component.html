@@ -1,3 +1,18 @@
-<p>
-  write works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>글쓰기</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="mat-block">
+      <input matInput placeholder="제목" [(ngModel)]="news.title">
+    </mat-form-field>
+    <div>
+      <ckeditor [(ngModel)]="news.content" debounce="500">
+      </ckeditor>
+    </div>
+    <!-- 로컬화일 업로드 구현부 -->
+    <div style="margin-top: 1em;" fxLayoutAlign="center center">
+      <button mat-raised-button mat-button-sm color="primary" (click)="addNews()">저 장</button>
+    </div>
+  </mat-card-content>
+</mat-card>

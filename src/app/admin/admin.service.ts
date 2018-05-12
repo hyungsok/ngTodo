@@ -25,4 +25,8 @@ export class AdminService {
   findOneNews(news_id: number): Observable<NewsVO> {
     return this.http.get<NewsVO>(this.SERVER + `/api/news?news_id=${news_id}`);
   }
+
+  addNews(news: NewsVO): Observable<ResultVO> {
+    return this.http.post<ResultVO>(this.SERVER + '/api/news', news, {headers: this.headers});
+  }
 }
