@@ -7,7 +7,7 @@
       <input matInput placeholder="제목" [(ngModel)]="news.title">
     </mat-form-field>
     <div>
-      <ckeditor [(ngModel)]="news.content" debounce="500">
+      <ckeditor [(ngModel)]="news.content" [config]="{uiColor: '#009900'}" debounce="500">
       </ckeditor>
     </div>
     <!-- 로컬화일 업로드 구현부 -->
