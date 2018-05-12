@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      로그인
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxLayout="column">
+    <button mat-raised-button class="button facebook my-1" *ngIf="naverUrl" (click)="gotoSocial('facebook')">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="fab">f</span>
+        <span fxFlex="1 1 auto"></span>
+        <span>페이스북 계정으로 로그인</span>
+        <span fxFlex="1 1 auto"></span>
+      </div>
+    </button>
+
+    <button mat-raised-button class="button kakaotalk my-1" *ngIf="kakaoUrl" (click)="gotoSocial('kakao')">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="fab">K</span>
+        <span fxFlex="1 1 auto"></span>
+        <span>카카오 계정으로 로그인</span>
+        <span fxFlex="1 1 auto"></span>
+      </div>
+    </button>
+    <button mat-raised-button class="button naver my-1" *ngIf="facebookUrl" (click)="gotoSocial('naver')">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="fab">N</span>
+        <span fxFlex="1 1 auto"></span>
+        <span>네이버 계정으로 로그인</span>
+        <span fxFlex="1 1 auto"></span>
+      </div>
+    </button>
+  </mat-card-content>
+</mat-card>
