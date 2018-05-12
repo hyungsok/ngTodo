@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../admin.service';
 import {NewsVO} from '../../domain/news.vo';
+import {PageVO} from '../../domain/page.vo';
 
 @Component({
   selector: 'app-news',
@@ -9,8 +10,11 @@ import {NewsVO} from '../../domain/news.vo';
 })
 export class NewsComponent implements OnInit {
   newsList: NewsVO[];
+  page: PageVO;
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService) {
+    this.page = new PageVO(0, 5, 0);
+  }
 
   ngOnInit() {
     const params = {
