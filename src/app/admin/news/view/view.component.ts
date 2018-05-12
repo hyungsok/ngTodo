@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AdminService} from '../../admin.service';
 import {NewsVO} from '../../../domain/news.vo';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ViewDialogComponent} from './view.dialog.component';
 
 @Component({
@@ -16,7 +16,8 @@ export class ViewComponent implements OnInit {
   html: SafeHtml;
 
   constructor(private route: ActivatedRoute, private adminService: AdminService,
-              private sanitizer: DomSanitizer, private dialog: MatDialog) {
+              private sanitizer: DomSanitizer, private dialog: MatDialog,
+              private router: Router, private snackBar: MatSnackBar) {
     // view객체를 호출할때, 첫번째만 생성. 두번째부터는 안찍힌다.
     // =>한번만 생성
     console.log(location.pathname);
@@ -48,6 +49,16 @@ export class ViewComponent implements OnInit {
         if (data) {
           // 삭제 로직 구현
           console.log(data);
+          this.adminService.removeNews(news.news_id)
+            .subscribe(body => {
+              if (body.result === 0) {
+                this.snackBar.open('삭제되었습니다.', null, {duration: 2000});
+                this.router.navigateByUrl('/admin/news');
+
+                //  뉴스 목록 이벤트 갱신
+                this.adminService.refresh.next(true);
+              }
+            });
         }
     });
   }
